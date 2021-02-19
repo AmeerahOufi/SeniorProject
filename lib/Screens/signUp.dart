@@ -1,9 +1,9 @@
 //import 'dart:html';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
+import 'package:flutter/semantics.dart';
+import 'package:tester/Screens/homepage_administrator.dart';
 import 'package:tester/Screens/main.dart';
-import 'package:tester/Screens/style.dart';
 
 class signUp extends StatelessWidget {
   // This widget is the root of your application.
@@ -29,9 +29,22 @@ class signUp extends StatelessWidget {
                     height: 200,
                   ),
                 ),
-                Text_Field(label: "Name", secure: false),
-                Text_Field(label: "Email", secure: false),
-                Text_Field(label: "Id Number", secure: false),
+                Container(
+                    width: 300,
+                    height: 40,
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(), labelText: "Name"),
+                    )),
+                Container(
+                  width: 300,
+                  height: 40,
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(), labelText: "E-mail")),
+                ),
                 Container(
                   padding: EdgeInsets.only(left: 10, right: 10),
                   margin: EdgeInsets.only(bottom: 10),
@@ -57,32 +70,43 @@ class signUp extends StatelessWidget {
                     }).toList(),
                   ),
                 ),
-                Text_Field(label: "Password", secure: true),
-                SubmitButtons(
-                  text: "Sign Up",
-                  onpressed: () {
-                    runApp(homepageAS());
-                  },
+                Container(
+                  width: 300,
+                  height: 40,
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: TextField(
+                      //keyboardType: PasswordCredential(),
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(), labelText: "Password")),
                 ),
                 Container(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                      Container(
-                        child: Text(
-                          "Already have an account?",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                      Container(
-                        child: TextButton(
-                          child: Text("Sign in"),
-                          onPressed: () {
-                            runApp(MyApp());
-                          },
-                        ),
-                      )
-                    ]))
+                  margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                  color: Colors.grey,
+                  width: 150,
+                  child: TextButton(
+                    child: Text(
+                      "Sign up",
+                      style: TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                    onPressed: () {
+                      runApp(homePageAdministrator());
+                    },
+                  ),
+                ),
+                Container(
+                  child: Text("I already hava an account, ",
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                ),
+                Container(
+                  child: TextButton(
+                    child: Text("Sign in"),
+                    onPressed: () {
+                      runApp(MyApp());
+                    },
+                  ),
+                )
               ],
             )));
   }
